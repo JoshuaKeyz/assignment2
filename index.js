@@ -6,6 +6,13 @@ const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 // General server function
+
+const _data = require('./lib/data');
+
+// TESTING
+_data.delete('test', 'newFile', (err)=>{
+  console.log('Error was ', err);
+})
 const server = (req, res)=>{
   
   // Get the path which the user entered
