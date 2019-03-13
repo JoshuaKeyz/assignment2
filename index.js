@@ -6,15 +6,11 @@ const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
 const handlers = require('./lib/handlers');
-
+const helpers = require('./lib/helpers');
 // General server function
 
 const _data = require('./lib/data');
 
-// TESTING
-_data.delete('test', 'newFile', (err)=>{
-  console.log('Error was ', err);
-})
 const server = (req, res)=>{
   
   // Get the path which the user entered
@@ -41,7 +37,7 @@ const server = (req, res)=>{
   req.on('end', (chunk)=>{
     payload += decoder.end();
 
-    
+    payload = helpers.parseJsonToObject(payload);
     const dataObj = {
       headers, 
       payload, 
