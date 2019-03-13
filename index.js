@@ -5,6 +5,8 @@ const http = require('http');
 const https = require('https');
 const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder;
+const handlers = require('./lib/handlers');
+
 // General server function
 
 const _data = require('./lib/data');
@@ -75,18 +77,10 @@ const server = (req, res)=>{
   
 }
 
-const handlers = {}
-handlers.sample = (data, callback)=>{
-  // callback a http status code and a payload object
-  callback(406, {name: 'My name is sample handler'})
-}
 
-handlers.notFound = (data, callback)=>{
-  callback(404);
-}
 
 const router = {
-  'sample': handlers.sample
+  'users': handlers.users
 }
 
 // Http Server
