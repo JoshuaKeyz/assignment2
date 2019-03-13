@@ -76,7 +76,8 @@ const server = (req, res)=>{
 
 
 const router = {
-  'users': handlers.users
+  'users': handlers.users,
+  'tokens': handlers.tokens
 }
 
 // Http Server
